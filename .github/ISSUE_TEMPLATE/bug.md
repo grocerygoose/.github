@@ -1,9 +1,8 @@
 ---
-name: Feature
+name: bug
 about: Use this template for tracking new features.
 title: "[SOLUTION]"
-labels: feat
-assignees: octocat
+labels: bug
 ---
 
 # 🚨 Problem
