@@ -7,7 +7,12 @@
 
 
 ---
-#### To-do list (Check these items off as they're completed)
-- [ ] Commits cleaned up (messages are meaningful/not identical, commits are condensed to a small, helpful amount)
-- [ ] The story has passed QA and PM review, if applicable
-- [ ] There are no pre-release dependency versions left in the source
+# 🎯 Overview 
+> an overview of the problem this change solves. must supply related issue number
+
+## ✏️ Description
+
+## ✨Commits 
+
+# 🧪 Tests
+> proof the changes work as expected
