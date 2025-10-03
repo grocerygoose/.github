@@ -1,0 +1,68 @@
+commitizen:
+  name: cz_customize
+  tag_format: v$major.$minor.$patch
+  version: 0.5.0
+
+  customize:
+    # Keep your maps
+    bump_map:
+      feat: MINOR
+      feat!: MAJOR
+      fix: PATCH
+      fix!: MAJOR
+      refac: PATCH
+      refac!: MAJOR
+
+    # Make bump strict (no empty matches)
+    bump_pattern: '^(feat|refac|fix)(!?)'
+
+    # Accept single or multi-scope, and "!" before or after scope.
+    # Required group names: change_type, scope, message (breaking is optional).
+    commit_parser: '^(?P<change_type>feat|refac|fix|chore)!?(?:\((?P<scope>[^()\r\n]+)\))?(?P<breaking>!)?:\s(?P<message>.+)$'
+
+    # Broad include filter matching the same shapes as above
+    changelog_pattern: '^(feat|refac|fix|chore)!?(\([^)]+\))?(!)?:\s.+$'
+
+    # (optional) keep your ordering/maps
+    change_type_order: [feat, refac, fix]
+    change_type_map:
+      feat!: feat!
+      refac!: refac!
+      fix!: fix!
+      feat: feat
+      refac: refac
+      fix: fix
+
+    # Keep your prompts/template; they don’t affect changelog generation
+    message_template: '{{change_type}}({{change_scope}}){% if is_breaking_change %}!{% endif %}: {{commit_message}}'
+    schema: '<type>(<scope>): <message>'
+    schema_pattern: '^(feat|refac|fix|chore)\([a-zA-Z0-9_-]+\)(!)?:\s.+$'
+    questions:  # … your existing questions unchanged
+      - choices:
+          - name: 'feat(<scope>): adds new functionality to src code'
+            value: feat
+          - name: 'refac(<scope>): reworks existing src code without changing its behavior'
+            value: refac
+          - name: 'fix(<scope>): corrects unexpected behavior in src code'
+            value: fix
+          - name: 'chore(<scope>): non source code changes (docs, ci, etc)'
+            value: chore
+        message: 'change_type: '
+        name: change_type
+        type: list
+      - choices:
+          - name: '(issue-templates): changes to issue template files'
+            value: issue-templates
+          - name: '(pr-templates): changes to pr template files'
+            value: pr-templates
+          - name: '(repo): changes to top level repo files'
+            value: repo
+        message: 'change_scope: '
+        name: change_scope
+        type: list
+      - message: 'breaking change?: '
+        name: is_breaking_change
+        type: confirm
+      - message: 'message: '
+        name: commit_message
+        type: input
