@@ -1,7 +1,7 @@
 commitizen:
   name: cz_customize
   tag_format: v$major.$minor.$patch
-  version: 0.5.0
+  version: 0.0.0
 
   customize:
     # Keep your maps
